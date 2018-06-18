@@ -15,8 +15,10 @@ public class Screening {
     private long screenId;
     @Column(name = "MOVIE_NAME")
     private String movieName;
-    @Column(name = "START_TIME")
-    private String startTime;
+    @Column(name = "SCREENING_DATE")
+    private String screeningDate;
+    @Column(name = "SCREENING_TIME")
+    private String screeningTime;
 
     public long getScreeningId() {
         return screeningId;
@@ -50,11 +52,19 @@ public class Screening {
         this.movieName = movieName;
     }
 
-    public String getStartTime() {
-        return startTime;
+    public String getScreeningDate() {
+        return screeningDate;
     }
 
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
+    public void setScreeningDate(String screeningDate) {
+        this.screeningDate = screeningDate;
+    }
+
+    public String getScreeningTime() {
+        return screeningTime;
+    }
+
+    public void setScreeningTime(String screeningTime) {
+        this.screeningTime = screeningTime;
     }
 }

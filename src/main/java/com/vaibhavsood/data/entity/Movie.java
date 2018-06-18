@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "MOVIE")
 public class Movie {
+    @Id
     @Column(name = "MOVIE_NAME")
     private String movie_name;
     @Column(name = "MOVIE_LANGUAGE")

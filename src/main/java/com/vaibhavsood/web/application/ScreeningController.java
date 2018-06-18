@@ -11,8 +11,8 @@ import java.util.List;
 @RequestMapping(value="/screenings")
 public class ScreeningController {
 
-    //@RequestMapping(method = RequestMethod.GET)
-    /*public List<Screening> getScreenings() {
+    /*@RequestMapping(method = RequestMethod.GET)
+    public List<Screening> getScreenings() {
 
     }*/
 }
