@@ -1,6 +1,8 @@
 package com.vaibhavsood.data.entity;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.sql.Time;
 
 @Entity
 @Table(name = "SCREENING")
@@ -16,9 +18,9 @@ public class Screening {
     @Column(name = "MOVIE_NAME")
     private String movieName;
     @Column(name = "SCREENING_DATE")
-    private String screeningDate;
+    private java.sql.Date screeningDate;
     @Column(name = "SCREENING_TIME")
-    private String screeningTime;
+    private java.sql.Time screeningTime;
 
     public long getScreeningId() {
         return screeningId;
@@ -52,19 +54,19 @@ public class Screening {
         this.movieName = movieName;
     }
 
-    public String getScreeningDate() {
+    public Date getScreeningDate() {
         return screeningDate;
     }
 
-    public void setScreeningDate(String screeningDate) {
+    public void setScreeningDate(Date screeningDate) {
         this.screeningDate = screeningDate;
     }
 
-    public String getScreeningTime() {
+    public Time getScreeningTime() {
         return screeningTime;
     }
 
-    public void setScreeningTime(String screeningTime) {
+    public void setScreeningTime(Time screeningTime) {
         this.screeningTime = screeningTime;
     }
 }

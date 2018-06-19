@@ -7,33 +7,33 @@ import javax.persistence.*;
 public class Movie {
     @Id
     @Column(name = "MOVIE_NAME")
-    private String movie_name;
+    private String movieName;
     @Column(name = "MOVIE_LANGUAGE")
-    private String movie_language;
+    private String movieLanguage;
     @Column(name = "MOVIE_LENGTH")
-    private int movie_length;
+    private int movieLength;
 
-    public String getMovie_name() {
-        return movie_name;
+    public String getMovieName() {
+        return movieName;
     }
 
-    public void setMovie_name(String movie_name) {
-        this.movie_name = movie_name;
+    public void setMovieName(String movieName) {
+        this.movieName = movieName;
     }
 
-    public String getMovie_language() {
-        return movie_language;
+    public String getMovieLanguage() {
+        return movieLanguage;
     }
 
-    public void setMovie_language(String movie_language) {
-        this.movie_language = movie_language;
+    public void setMovieLanguage(String movieLanguage) {
+        this.movieLanguage = movieLanguage;
     }
 
-    public int getMovie_length() {
-        return movie_length;
+    public int getMovieLength() {
+        return movieLength;
     }
 
-    public void setMovie_length(int movie_length) {
-        this.movie_length = movie_length;
+    public void setMovieLength(int movieLength) {
+        this.movieLength = movieLength;
     }
 }

@@ -1,18 +1,21 @@
-package com.vaibhavsood.data.entity;
+package com.vaibhavsood.business.domain;
 
-import javax.persistence.*;
+import java.sql.Time;
 
-@Entity
-@Table(name = "THEATRE")
-public class Theatre {
-    @Id
-    @Column(name = "THEATRE_ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class MovieScreening {
+    private String movieName;
     private long theatreId;
-    @Column(name = "THEATRE_NAME")
     private String theatreName;
-    @Column(name = "THEATRE_CITY")
     private String theatreCity;
+    private Time screeningTime;
+
+    public String getMovieName() {
+        return movieName;
+    }
+
+    public void setMovieName(String movieName) {
+        this.movieName = movieName;
+    }
 
     public long getTheatreId() {
         return theatreId;
@@ -36,5 +39,13 @@ public class Theatre {
 
     public void setTheatreCity(String theatreCity) {
         this.theatreCity = theatreCity;
+    }
+
+    public Time getScreeningTime() {
+        return screeningTime;
+    }
+
+    public void setScreeningTime(Time screeningTime) {
+        this.screeningTime = screeningTime;
     }
 }
