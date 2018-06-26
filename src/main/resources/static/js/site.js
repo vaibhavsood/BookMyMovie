@@ -43,4 +43,9 @@ function formatDate(input) {
 $(document).ready(function(){
     setPicker();
     setInitialDate();
+
+    //$(".bookButton").click(function() {
+
+    //}
+    //);
 });

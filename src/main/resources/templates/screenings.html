@@ -34,12 +34,15 @@
                 <td>City</td>
                 <td>Time</td>
             </tr>
+            <form action="/screenings" th:action="@{/screenings}" th:object="${MovieScreening}" method="post">
             <tr th:each="movieScreening: ${movieScreenings}">
-                <td th:text="${movieScreening.movieName}!=null? ${movieScreening.movieName} : 'NO MOVIE!'">Movie Name</td>
-                <td th:text="${movieScreening.theatreName}">Theatre</td>
-                <td th:text="${movieScreening.theatreCity}">City</td>
-                <td th:text="${movieScreening.screeningTime}">Time</td>
+                <td th:text="${movieScreening.movieName}" th:field="*{movieName}">Movie Name</td>
+                <td th:text="${movieScreening.theatreName}" th:field="*{theatreName}">Theatre</td>
+                <td th:text="${movieScreening.theatreCity}" th:field="*{theatreCity}">City</td>
+                <td th:text="${movieScreening.screeningTime}" th:field="*{screeningTime}">Time</td>
+                <td><input  class= "bookButton" type="submit" value="Book" /></td>
             </tr>
+            </form>
         </table>
     </div>
     <footer class="footer navbar-inverse navbar-fixed-bottom">
