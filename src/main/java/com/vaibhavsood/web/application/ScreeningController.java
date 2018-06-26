@@ -39,7 +39,7 @@ public class ScreeningController {
         }
 
         List<MovieScreening> result = this.screeningService.getMovieScreeningsByDate(date);
-        model.addAttribute("screenings", result);
+        model.addAttribute("movieScreenings", result);
 
         return "screenings";
     }

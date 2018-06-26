@@ -1,10 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>Movie Reservations</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/site.css"/>
 </head>
 <body>
-    <h1> We are at the screenings endpoint</h1>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="screenings">Movie Screenings</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="page-header">
+            <h1>Welcome to the Movie Reservations Page</h1>
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+            <input type="text" class="form-control" id="datepicker" aria-describedby="basic-addon1"/>
+        </div>
+
+        <table class="table table-striped table-bordered">
+            <tr>
+                <td>Movie Name</td>
+                <td>Theatre</td>
+                <td>City</td>
+                <td>Time</td>
+            </tr>
+            <tr th:each="movieScreening: ${movieScreenings}">
+                <td th:text="${movieScreening.movieName}!=null? ${movieScreening.movieName} : 'NO MOVIE!'">Movie Name</td>
+                <td th:text="${movieScreening.theatreName}">Theatre</td>
+                <td th:text="${movieScreening.theatreCity}">City</td>
+                <td th:text="${movieScreening.screeningTime}">Time</td>
+            </tr>
+        </table>
+    </div>
+    <footer class="footer navbar-inverse navbar-fixed-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4"><p class="text-muted">@Copyright 2018 Vaibhav Sood</p></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </body>
 </html>
