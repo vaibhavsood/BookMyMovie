@@ -8,11 +8,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -44,16 +46,19 @@ public class ScreeningController {
 
         List<MovieScreening> result = this.screeningService.getMovieScreeningsByDate(date);
         model.addAttribute("movieScreenings", result);
-
+        model.addAttribute("movieBooking", new MovieScreening());
         return "screenings";
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String bookSeats(@ModelAttribute MovieScreening movieScreening) {
-        LOGGER.info("movieName:" + movieScreening.getMovieName());
-        LOGGER.info(movieScreening.getTheatreCity());
-        LOGGER.info(movieScreening.getTheatreName());
-        //LOGGER.info(movieScreening.getScreeningTime());
+    public String bookSeats(@Valid @ModelAttribute MovieScreening movieBooking, BindingResult bindingResult) {
+        if (bindingResult.hasErrors())
+            return "error";
+
+        LOGGER.info(movieBooking.getMovieName());
+        LOGGER.info(movieBooking.getTheatreCity());
+        LOGGER.info(movieBooking.getTheatreName());
+        //LOGGER.info(movieScreening.get(0).getScreeningTime());
         return "result";
     }
 
