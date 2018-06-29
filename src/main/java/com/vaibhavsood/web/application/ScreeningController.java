@@ -64,6 +64,7 @@ public class ScreeningController {
 
         Screening movieScreening = this.screeningService.getScreening(movieBooking);
 
+
         return "result";
     }
 

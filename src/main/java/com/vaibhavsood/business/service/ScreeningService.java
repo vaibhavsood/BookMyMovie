@@ -6,6 +6,7 @@ import com.vaibhavsood.data.entity.Theatre;
 import com.vaibhavsood.data.repository.MovieRepository;
 import com.vaibhavsood.data.repository.ScreeningRepository;
 import com.vaibhavsood.data.repository.TheatreRepository;
+import com.vaibhavsood.data.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,13 +21,16 @@ public class ScreeningService {
     private ScreeningRepository screeningRepository;
     private MovieRepository movieRepository;
     private TheatreRepository theatreRepository;
+    private TicketRepository ticketRepository;
 
     private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
-    public ScreeningService(ScreeningRepository screeningRepository, MovieRepository movieRepository, TheatreRepository theatreRepository) {
+    public ScreeningService(ScreeningRepository screeningRepository, MovieRepository movieRepository, TheatreRepository theatreRepository
+                            , TicketRepository ticketRepository) {
         this.screeningRepository = screeningRepository;
         this.movieRepository = movieRepository;
         this.theatreRepository = theatreRepository;
+        this.ticketRepository = ticketRepository;
     }
 
     public Screening getScreening(MovieScreening movieScreening) {
@@ -62,4 +66,6 @@ public class ScreeningService {
 
         return movieScreenings;
     }
+
+
 }
