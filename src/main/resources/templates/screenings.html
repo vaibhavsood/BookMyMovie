@@ -32,6 +32,7 @@
                 <td>Movie Name</td>
                 <td>Theatre</td>
                 <td>City</td>
+                <td>Date</td>
                 <td>Time</td>
             </tr>
             <tr th:each="movieScreening: ${movieScreenings}">
@@ -39,6 +40,7 @@
                     <input type="hidden" th:value="${movieScreening.movieName}" th:attr="name='movieName'"><td th:text="${movieScreening.movieName}">Movie Name</td></input>
                     <input type="hidden" th:value="${movieScreening.theatreName}" th:attr="name='theatreName'"><td th:text="${movieScreening.theatreName}">Theatre</td></input>
                     <input type="hidden" th:value="${movieScreening.theatreCity}" th:attr="name='theatreCity'"><td th:text="${movieScreening.theatreCity}">City</td></input>
+                    <input type="hidden" th:value="${movieScreening.screeningDate}" th:attr="name='screeningDate'"><td th:text="${movieScreening.screeningDate}">Date</td></input>
                     <input type="hidden" th:value="${movieScreening.screeningTime}" th:attr="name='screeningTime'"><td th:text="${movieScreening.screeningTime}">Time</td></input>
                     <td><input  class= "bookButton" type="submit" value="Book" /></td>
                 </form>

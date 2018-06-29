@@ -58,7 +58,12 @@ public class ScreeningController {
         LOGGER.info(movieBooking.getMovieName());
         LOGGER.info(movieBooking.getTheatreCity());
         LOGGER.info(movieBooking.getTheatreName());
-        //LOGGER.info(movieScreening.get(0).getScreeningTime());
+        LOGGER.info(movieBooking.getScreeningTime());
+        LOGGER.info(movieBooking.getScreeningDate());
+
+
+        Screening movieScreening = this.screeningService.getScreening(movieBooking);
+
         return "result";
     }
 

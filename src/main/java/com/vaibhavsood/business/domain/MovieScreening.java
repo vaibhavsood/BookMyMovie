@@ -1,13 +1,30 @@
 package com.vaibhavsood.business.domain;
 
-import java.sql.Time;
+import java.util.Date;
 
 public class MovieScreening {
     private String movieName;
     private long theatreId;
     private String theatreName;
     private String theatreCity;
-    private Time screeningTime;
+    private String screeningDate;
+    private String screeningTime;
+
+    public String getScreeningDate() {
+        return screeningDate;
+    }
+
+    public void setScreeningDate(String screeningDate) {
+        this.screeningDate = screeningDate;
+    }
+
+    public String getScreeningTime() {
+        return screeningTime;
+    }
+
+    public void setScreeningTime(String screeningTime) {
+        this.screeningTime = screeningTime;
+    }
 
     public String getMovieName() {
         return movieName;
@@ -39,13 +56,5 @@ public class MovieScreening {
 
     public void setTheatreCity(String theatreCity) {
         this.theatreCity = theatreCity;
-    }
-
-    public Time getScreeningTime() {
-        return screeningTime;
-    }
-
-    public void setScreeningTime(Time screeningTime) {
-        this.screeningTime = screeningTime;
     }
 }

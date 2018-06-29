@@ -9,6 +9,8 @@ import com.vaibhavsood.data.repository.TheatreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,10 +21,18 @@ public class ScreeningService {
     private MovieRepository movieRepository;
     private TheatreRepository theatreRepository;
 
+    private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+
     public ScreeningService(ScreeningRepository screeningRepository, MovieRepository movieRepository, TheatreRepository theatreRepository) {
         this.screeningRepository = screeningRepository;
         this.movieRepository = movieRepository;
         this.theatreRepository = theatreRepository;
+    }
+
+    public Screening getScreening(MovieScreening movieScreening) {
+        Theatre theatre = theatreRepository.findByTheatreNameAndTheatreCity(movieScreening.getTheatreName(), movieScreening.getTheatreCity());
+        return screeningRepository.findByMovieNameAndTheatreIdAndScreeningDateAndScreeningTime(movieScreening.getMovieName(), theatre.getTheatreId(),
+                java.sql.Date.valueOf(movieScreening.getScreeningDate()), java.sql.Time.valueOf(movieScreening.getScreeningTime()));
     }
 
     public List<MovieScreening> getMovieScreeningsByDate(Date date) {
@@ -42,7 +52,9 @@ public class ScreeningService {
                     movieScreening.setTheatreCity(theatre.getTheatreCity());
                 }
 
-                movieScreening.setScreeningTime(screening.getScreeningTime());
+
+                movieScreening.setScreeningDate(DATE_FORMAT.format(date));
+                movieScreening.setScreeningTime(screening.getScreeningTime().toString());
 
                 movieScreenings.add(movieScreening);
             }
