@@ -9,6 +9,15 @@ public class MovieScreening {
     private String theatreCity;
     private String screeningDate;
     private String screeningTime;
+    private int numSeats;
+
+    public int getNumSeats() {
+        return numSeats;
+    }
+
+    public void setNumSeats(int numSeats) {
+        this.numSeats = numSeats;
+    }
 
     public String getScreeningDate() {
         return screeningDate;

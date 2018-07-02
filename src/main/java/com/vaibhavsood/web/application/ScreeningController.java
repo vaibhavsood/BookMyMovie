@@ -3,6 +3,7 @@ package com.vaibhavsood.web.application;
 import com.vaibhavsood.business.domain.MovieScreening;
 import com.vaibhavsood.business.service.ScreeningService;
 import com.vaibhavsood.data.entity.Screening;
+import com.vaibhavsood.data.entity.Ticket;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,9 +61,10 @@ public class ScreeningController {
         LOGGER.info(movieBooking.getTheatreName());
         LOGGER.info(movieBooking.getScreeningTime());
         LOGGER.info(movieBooking.getScreeningDate());
+        LOGGER.info(Integer.toString(movieBooking.getNumSeats()));
 
-
-        Screening movieScreening = this.screeningService.getScreening(movieBooking);
+        int bookedTickets = this.screeningService.getBookedTickets(movieBooking);
+        int totalTickets = this.screeningService.getTotalTickets(movieBooking);
 
 
         return "result";

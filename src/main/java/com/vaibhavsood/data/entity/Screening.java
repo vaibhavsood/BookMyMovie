@@ -21,6 +21,16 @@ public class Screening {
     private java.sql.Date screeningDate;
     @Column(name = "SCREENING_TIME")
     private java.sql.Time screeningTime;
+    @Column(name = "BOOKED_TICKETS")
+    private int bookedTickets;
+
+    public int getBookedTickets() {
+        return bookedTickets;
+    }
+
+    public void setBookedTickets(int bookedTickets) {
+        this.bookedTickets = bookedTickets;
+    }
 
     public long getScreeningId() {
         return screeningId;

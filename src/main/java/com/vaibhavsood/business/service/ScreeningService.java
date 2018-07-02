@@ -1,12 +1,11 @@
 package com.vaibhavsood.business.service;
 
 import com.vaibhavsood.business.domain.MovieScreening;
+import com.vaibhavsood.data.entity.Screen;
 import com.vaibhavsood.data.entity.Screening;
 import com.vaibhavsood.data.entity.Theatre;
-import com.vaibhavsood.data.repository.MovieRepository;
-import com.vaibhavsood.data.repository.ScreeningRepository;
-import com.vaibhavsood.data.repository.TheatreRepository;
-import com.vaibhavsood.data.repository.TicketRepository;
+import com.vaibhavsood.data.entity.Ticket;
+import com.vaibhavsood.data.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,21 +21,34 @@ public class ScreeningService {
     private MovieRepository movieRepository;
     private TheatreRepository theatreRepository;
     private TicketRepository ticketRepository;
+    private ScreenRepository screenRepository;
 
     private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
     public ScreeningService(ScreeningRepository screeningRepository, MovieRepository movieRepository, TheatreRepository theatreRepository
-                            , TicketRepository ticketRepository) {
+                            , TicketRepository ticketRepository, ScreenRepository screenRepository) {
         this.screeningRepository = screeningRepository;
         this.movieRepository = movieRepository;
         this.theatreRepository = theatreRepository;
         this.ticketRepository = ticketRepository;
+        this.screenRepository = screenRepository;
     }
 
-    public Screening getScreening(MovieScreening movieScreening) {
+    private Screening getScreening(MovieScreening movieScreening) {
         Theatre theatre = theatreRepository.findByTheatreNameAndTheatreCity(movieScreening.getTheatreName(), movieScreening.getTheatreCity());
         return screeningRepository.findByMovieNameAndTheatreIdAndScreeningDateAndScreeningTime(movieScreening.getMovieName(), theatre.getTheatreId(),
                 java.sql.Date.valueOf(movieScreening.getScreeningDate()), java.sql.Time.valueOf(movieScreening.getScreeningTime()));
+    }
+
+    public int getBookedTickets(MovieScreening movieScreening) {
+        Screening screening = getScreening(movieScreening);
+        return screening.getBookedTickets();
+    }
+
+    public int getTotalTickets(MovieScreening movieScreening) {
+        Screening screening = getScreening(movieScreening);
+        long screenId = screening.getScreenId();
+        return screenRepository.findByScreenId(screenId).getSeatsNum();
     }
 
     public List<MovieScreening> getMovieScreeningsByDate(Date date) {
