@@ -1,10 +1,7 @@
 package com.vaibhavsood.business.service;
 
 import com.vaibhavsood.business.domain.MovieScreening;
-import com.vaibhavsood.data.entity.Screen;
-import com.vaibhavsood.data.entity.Screening;
-import com.vaibhavsood.data.entity.Theatre;
-import com.vaibhavsood.data.entity.Ticket;
+import com.vaibhavsood.data.entity.*;
 import com.vaibhavsood.data.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,12 +37,18 @@ public class ScreeningService {
                 java.sql.Date.valueOf(movieScreening.getScreeningDate()), java.sql.Time.valueOf(movieScreening.getScreeningTime()));
     }
 
-    public int getBookedTickets(MovieScreening movieScreening) {
+    public void bookSeats(MovieScreening movieScreening, int seats) {
+        Screening screening = getScreening(movieScreening);
+        screening.setBookedTickets(seats);
+        screeningRepository.save(screening);
+    }
+
+    public int getBookedSeats(MovieScreening movieScreening) {
         Screening screening = getScreening(movieScreening);
         return screening.getBookedTickets();
     }
 
-    public int getTotalTickets(MovieScreening movieScreening) {
+    public int getTotalSeats(MovieScreening movieScreening) {
         Screening screening = getScreening(movieScreening);
         long screenId = screening.getScreenId();
         return screenRepository.findByScreenId(screenId).getSeatsNum();

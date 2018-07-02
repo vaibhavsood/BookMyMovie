@@ -34,6 +34,7 @@
                 <td>City</td>
                 <td>Date</td>
                 <td>Time</td>
+                <td>Number of seats</td>
             </tr>
             <tr th:each="movieScreening: ${movieScreenings}">
                 <form action="/screenings" th:action="@{/screenings}" th:object="${movieBooking}" method="post">

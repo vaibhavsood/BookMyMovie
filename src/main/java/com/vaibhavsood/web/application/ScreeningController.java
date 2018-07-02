@@ -63,9 +63,13 @@ public class ScreeningController {
         LOGGER.info(movieBooking.getScreeningDate());
         LOGGER.info(Integer.toString(movieBooking.getNumSeats()));
 
-        int bookedTickets = this.screeningService.getBookedTickets(movieBooking);
-        int totalTickets = this.screeningService.getTotalTickets(movieBooking);
+        int bookedSeats = this.screeningService.getBookedSeats(movieBooking);
+        int totalSeats = this.screeningService.getTotalSeats(movieBooking);
 
+        if ((bookedSeats+movieBooking.getNumSeats()) > totalSeats)
+            return "error";
+
+        this.screeningService.bookSeats(movieBooking, bookedSeats+movieBooking.getNumSeats());
 
         return "result";
     }
