@@ -1,6 +1,8 @@
 package com.vaibhavsood.web.application;
 
+import com.vaibhavsood.business.domain.MovieScreening;
 import com.vaibhavsood.business.service.ScreeningService;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import java.text.SimpleDateFormat;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -28,8 +31,22 @@ public class ScreeningControllerTest {
     private MockMvc mockMvc;
 
     @Test
+    @Ignore
     public void getScreenings() throws Exception {
         this.mockMvc.perform(get("/screenings?date=2018-05-25")).andDo(print()).andExpect(status().isOk()).andExpect(content().string(containsString("")));
 
+    }
+
+    @Test
+    public void testBookSeats() throws Exception {
+        MovieScreening aMovieScreening = new MovieScreening();
+        aMovieScreening.setMovieName("Pataakha");
+        aMovieScreening.setScreeningDate("2018-09-27");
+        aMovieScreening.setScreeningTime("21:00:00");
+        aMovieScreening.setTheatreCity("Pune");
+        aMovieScreening.setTheatreName("Inox");
+        aMovieScreening.setNumSeats(500);
+
+        this.mockMvc.perform(post("/screenings", aMovieScreening)).andExpect(status().isOk());
     }
 }
