@@ -52,9 +52,7 @@ public class ScreeningController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String bookSeats(@Valid @ModelAttribute MovieScreening movieBooking, BindingResult bindingResult) {
-        if (bindingResult.hasErrors())
-            return "error";
+    public String bookSeats(@Valid @ModelAttribute MovieScreening movieBooking) {
 
         LOGGER.info(movieBooking.getMovieName());
         LOGGER.info(movieBooking.getTheatreCity());

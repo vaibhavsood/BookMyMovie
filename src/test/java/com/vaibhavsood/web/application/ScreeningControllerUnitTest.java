@@ -20,10 +20,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebMvcTest(ScreeningController.class)
-public class ScreeningControllerTest {
+public class ScreeningControllerUnitTest {
     private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
     @MockBean
     private ScreeningService screeningService;
@@ -47,6 +48,7 @@ public class ScreeningControllerTest {
         aMovieScreening.setTheatreName("Inox");
         aMovieScreening.setNumSeats(500);
 
-        this.mockMvc.perform(post("/screenings", aMovieScreening)).andExpect(status().isOk());
+        this.mockMvc.perform(post("/screenings", aMovieScreening)).andExpect(status().isOk())
+        .andExpect(view().name("result"));
     }
 }
