@@ -37,10 +37,11 @@ public class ScreeningService {
                 java.sql.Date.valueOf(movieScreening.getScreeningDate()), java.sql.Time.valueOf(movieScreening.getScreeningTime()));
     }
 
-    public void bookSeats(MovieScreening movieScreening, int seats) {
+    public int bookSeats(MovieScreening movieScreening, int seats) {
         Screening screening = getScreening(movieScreening);
         screening.setBookedTickets(seats);
         screeningRepository.save(screening);
+        return getBookedSeats(movieScreening);
     }
 
     public int getBookedSeats(MovieScreening movieScreening) {
