@@ -44,7 +44,7 @@ public class ScreeningControllerIntegrationTest {
         aMovieScreening.setScreeningTime("18:00:00");
         aMovieScreening.setTheatreCity("PUNE");
         aMovieScreening.setTheatreName("INOX");
-        aMovieScreening.setNumSeats(95);
+        aMovieScreening.setNumSeats(96);
 
         String result = screeningController.bookSeats(aMovieScreening);
 
