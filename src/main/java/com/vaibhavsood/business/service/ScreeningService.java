@@ -33,6 +33,8 @@ public class ScreeningService {
 
     private Screening getScreening(MovieScreening movieScreening) {
         Theatre theatre = theatreRepository.findByTheatreNameAndTheatreCity(movieScreening.getTheatreName(), movieScreening.getTheatreCity());
+        if (theatre == null)
+            return null;
         return screeningRepository.findByMovieNameAndTheatreIdAndScreeningDateAndScreeningTime(movieScreening.getMovieName(), theatre.getTheatreId(),
                 java.sql.Date.valueOf(movieScreening.getScreeningDate()), java.sql.Time.valueOf(movieScreening.getScreeningTime()));
     }
@@ -82,6 +84,4 @@ public class ScreeningService {
 
         return movieScreenings;
     }
-
-
 }
