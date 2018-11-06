@@ -6,3 +6,14 @@ body{
 footer{
     height: 50px;
 }
+
+.movie-cards {
+  padding: 100px 0;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  .card {
+    flex: 0 0 auto;
+  }
+}
