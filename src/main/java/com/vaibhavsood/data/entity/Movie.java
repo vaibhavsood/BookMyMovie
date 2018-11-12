@@ -8,10 +8,10 @@ public class Movie {
     @Id
     @Column(name = "MOVIE_NAME")
     private String movieName;
-    @Column(name = "MOVIE_LANGUAGE")
-    private String movieLanguage;
-    @Column(name = "MOVIE_LENGTH")
-    private int movieLength;
+    @Column(name = "MOVIE_ID")
+    private String movieId;
+    @Column(name = "MOVIE_URL")
+    private String movieUrl;
 
     public String getMovieName() {
         return movieName;
@@ -21,19 +21,19 @@ public class Movie {
         this.movieName = movieName;
     }
 
-    public String getMovieLanguage() {
-        return movieLanguage;
+    public String getMovieId() {
+        return movieId;
     }
 
-    public void setMovieLanguage(String movieLanguage) {
-        this.movieLanguage = movieLanguage;
+    public void setMovieId(String movieId) {
+        this.movieId = movieId;
     }
 
-    public int getMovieLength() {
-        return movieLength;
+    public String getMovieUrl() {
+        return movieUrl;
     }
 
-    public void setMovieLength(int movieLength) {
-        this.movieLength = movieLength;
+    public void setMovieUrl(String movieUrl) {
+        this.movieUrl = movieUrl;
     }
 }
