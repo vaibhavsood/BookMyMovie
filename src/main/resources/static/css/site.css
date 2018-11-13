@@ -10,10 +10,12 @@ footer{
 .movie-cards {
   padding: 100px 0;
   display: flex;
-  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  /*flex-wrap: nowrap;*/
   overflow-x: auto;
 
-  .card {
+  /*.card {
     flex: 0 0 auto;
-  }
+  }*/
 }

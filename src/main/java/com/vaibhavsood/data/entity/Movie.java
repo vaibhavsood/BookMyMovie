@@ -10,8 +10,8 @@ public class Movie {
     private String movieName;
     @Column(name = "MOVIE_ID")
     private String movieId;
-    @Column(name = "MOVIE_URL")
-    private String movieUrl;
+    @Column(name = "MOVIE_POSTER_URL")
+    private String moviePosterUrl;
 
     public String getMovieName() {
         return movieName;
@@ -29,11 +29,11 @@ public class Movie {
         this.movieId = movieId;
     }
 
-    public String getMovieUrl() {
-        return movieUrl;
+    public String getMoviePosterUrl() {
+        return moviePosterUrl;
     }
 
-    public void setMovieUrl(String movieUrl) {
-        this.movieUrl = movieUrl;
+    public void setMoviePosterUrl(String moviePosterUrl) {
+        this.moviePosterUrl = moviePosterUrl;
     }
 }
