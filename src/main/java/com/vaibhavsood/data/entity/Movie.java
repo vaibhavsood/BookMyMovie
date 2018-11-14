@@ -9,7 +9,7 @@ public class Movie {
     @Column(name = "MOVIE_NAME")
     private String movieName;
     @Column(name = "MOVIE_ID")
-    private String movieId;
+    private long movieId;
     @Column(name = "MOVIE_POSTER_URL")
     private String moviePosterUrl;
 
@@ -21,11 +21,11 @@ public class Movie {
         this.movieName = movieName;
     }
 
-    public String getMovieId() {
+    public long getMovieId() {
         return movieId;
     }
 
-    public void setMovieId(String movieId) {
+    public void setMovieId(long movieId) {
         this.movieId = movieId;
     }
 
