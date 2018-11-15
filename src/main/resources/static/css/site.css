@@ -12,10 +12,10 @@ footer{
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  /*flex-wrap: nowrap;*/
+  flex-wrap: nowrap;
   overflow-x: auto;
 
-  /*.card {
+  .card {
     flex: 0 0 auto;
-  }*/
+  }
 }

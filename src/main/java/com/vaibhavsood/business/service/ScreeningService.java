@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ScreeningService {
@@ -57,6 +55,20 @@ public class ScreeningService {
         return screenRepository.findByScreenId(screenId).getSeatsNum();
     }
 
+    public Set<Movie> getMoviesByDate(Date date) {
+        Iterable<Screening> screenings = this.screeningRepository.findByScreeningDate(new java.sql.Date(date.getTime()));
+        Set<Movie> movies = new HashSet<>();
+
+        if (screenings != null) {
+            for (Screening screening : screenings) {
+                Movie movie = movieRepository.findByMovieName(screening.getMovieName());
+                movies.add(movie);
+            }
+        }
+
+        return movies;
+    }
+
     public List<MovieScreening> getMovieScreeningsByDate(Date date) {
         Iterable<Screening> screenings = this.screeningRepository.findByScreeningDate(new java.sql.Date(date.getTime()));
         List<MovieScreening> movieScreenings = new ArrayList<>();
@@ -65,8 +77,10 @@ public class ScreeningService {
             for (Screening screening : screenings) {
                 MovieScreening movieScreening = new MovieScreening();
                 Theatre theatre = theatreRepository.findByTheatreId(screening.getTheatreId());
+                Movie movie = movieRepository.findByMovieName(screening.getMovieName());
 
                 movieScreening.setMovieName(screening.getMovieName());
+                movieScreening.setMoviePosterURL(movie.getMoviePosterUrl());
 
                 if (theatre != null) {
                     movieScreening.setTheatreId(theatre.getTheatreId());

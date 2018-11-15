@@ -2,6 +2,7 @@ package com.vaibhavsood.web.application;
 
 import com.vaibhavsood.business.domain.MovieScreening;
 import com.vaibhavsood.business.service.ScreeningService;
+import com.vaibhavsood.data.entity.Movie;
 import com.vaibhavsood.data.entity.Screening;
 import com.vaibhavsood.data.entity.Ticket;
 import org.slf4j.Logger;
@@ -21,6 +22,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping(value="/screenings")
@@ -45,8 +47,8 @@ public class ScreeningController {
             date = new Date();
         }
 
-        List<MovieScreening> result = this.screeningService.getMovieScreeningsByDate(date);
-        model.addAttribute("movieScreenings", result);
+        Set<Movie> result = this.screeningService.getMoviesByDate(date);
+        model.addAttribute("movies", result);
         model.addAttribute("movieBooking", new MovieScreening());
         return "screenings";
     }
@@ -71,5 +73,4 @@ public class ScreeningController {
 
         return "result";
     }
-
 }

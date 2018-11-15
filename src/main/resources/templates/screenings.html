@@ -26,39 +26,12 @@
     </nav>
     <div class="container">
         <div class="movie-cards">
-            <div class="card"><img class="card" src="images/space1.jpg"/></div>
-            <div class="card"><img class="card" src="images/space2.jpg"/></div>
-            <div class="card"><img class="card" src="images/space3.jpg"/></div>
-            <div class="card"><img class="card" src="images/space4.jpg"/></div>
-            <div class="card"><img class="card" src="images/space5.jpg"/></div>
-            <div class="card"><img class="card" src="images/space6.jpg"/></div>
+            <img class="card" th:each="movie: ${movies}" th:src="${movie.moviePosterUrl}"/>
         </div>
         <div class="input-group">
             <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
             <input type="text" class="form-control" id="datepicker" aria-describedby="basic-addon1"/>
         </div>
-
-        <table class="table table-striped table-bordered" th:if="${!movieScreenings.empty}">
-            <tr>
-                <td>Movie Name</td>
-                <td>Theatre</td>
-                <td>City</td>
-                <td>Date</td>
-                <td>Time</td>
-                <td>Number of seats</td>
-            </tr>
-            <tr th:each="movieScreening: ${movieScreenings}">
-                <form action="/screenings" th:action="@{/screenings}" th:object="${movieBooking}" method="post">
-                    <input type="hidden" th:value="${movieScreening.movieName}" th:attr="name='movieName'"><td th:text="${movieScreening.movieName}">Movie Name</td></input>
-                    <input type="hidden" th:value="${movieScreening.theatreName}" th:attr="name='theatreName'"><td th:text="${movieScreening.theatreName}">Theatre</td></input>
-                    <input type="hidden" th:value="${movieScreening.theatreCity}" th:attr="name='theatreCity'"><td th:text="${movieScreening.theatreCity}">City</td></input>
-                    <input type="hidden" th:value="${movieScreening.screeningDate}" th:attr="name='screeningDate'"><td th:text="${movieScreening.screeningDate}">Date</td></input>
-                    <input type="hidden" th:value="${movieScreening.screeningTime}" th:attr="name='screeningTime'"><td th:text="${movieScreening.screeningTime}">Time</td></input>
-                    <td><input type="input" th:attr="name='numSeats'"/></td>
-                    <td><input  class= "bookButton" type="submit" value="Book" /></td>
-                </form>
-            </tr>
-        </table>
     </div>
     <footer class="footer navbar-inverse navbar-fixed-bottom">
         <div class="container">

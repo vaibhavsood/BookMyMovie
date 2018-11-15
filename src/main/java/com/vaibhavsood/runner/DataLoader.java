@@ -52,7 +52,7 @@ public class DataLoader implements ApplicationRunner {
     }
 
     private void populateMovieTable() {
-        try (BufferedReader brMovies = new BufferedReader(new FileReader("C:\\Users\\vaibhav_sood.PERSISTENT\\Downloads\\Ex_Files_Learning_Spring_Boot\\Ex_Files_Learning_Spring_Boot\\Exercise Files\\Chapter 1\\01_03\\01_03_end\\reservations\\src\\main\\resources\\movies.csv"));
+        try (BufferedReader brMovies = new BufferedReader(new FileReader("C:\\Users\\vaibhav_sood.PERSISTENT\\Downloads\\Ex_Files_Learning_Spring_Boot\\Ex_Files_Learning_Spring_Boot\\Exercise Files\\Chapter 1\\01_03\\01_03_end\\reservations\\src\\main\\resources\\movies.medium.csv"));
              BufferedReader brLinks = new BufferedReader(new FileReader("C:\\Users\\vaibhav_sood.PERSISTENT\\Downloads\\Ex_Files_Learning_Spring_Boot\\Ex_Files_Learning_Spring_Boot\\Exercise Files\\Chapter 1\\01_03\\01_03_end\\reservations\\src\\main\\resources\\links.csv"))) {
             String line;
             brMovies.readLine();    // Skip header line
@@ -111,10 +111,16 @@ public class DataLoader implements ApplicationRunner {
                 // Randomly select 2 movies from the movies db, 1 each for each screen
                 long totalMovies = movieRepository.count();
                 Random random = new Random();
+
                 long movieId1 = random.nextInt((int)totalMovies)+1;
-                long movieId2 = random.nextInt((int)totalMovies)+1;     // TODO: check movieId1 != movieId2
-                Movie movie1 = movieRepository.findByMovieId(movieId1);
-                Movie movie2 = movieRepository.findByMovieId(movieId2);
+                Movie movie1 = null;
+                while ((movie1 = movieRepository.findByMovieId(movieId1)) == null)
+                    movieId1 = random.nextInt((int)totalMovies)+1;
+
+                long movieId2 = random.nextInt((int)totalMovies)+1;
+                Movie movie2 = null;
+                while ((movie2 = movieRepository.findByMovieId(movieId2)) == null)
+                    movieId2 = random.nextInt((int)totalMovies)+1;
 
                 screening1.setMovieName(movie1.getMovieName());
                 screening2.setMovieName(movie2.getMovieName());

@@ -4,12 +4,21 @@ import java.util.Date;
 
 public class MovieScreening {
     private String movieName;
+    private String moviePosterURL;
     private long theatreId;
     private String theatreName;
     private String theatreCity;
     private String screeningDate;
     private String screeningTime;
     private int numSeats;
+
+    public String getMoviePosterURL() {
+        return moviePosterURL;
+    }
+
+    public void setMoviePosterURL(String moviePosterURL) {
+        this.moviePosterURL = moviePosterURL;
+    }
 
     public int getNumSeats() {
         return numSeats;
