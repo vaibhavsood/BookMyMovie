@@ -6,7 +6,7 @@ import java.sql.Time;
 
 @Entity
 @Table(name = "SCREENING")
-public class Screening {
+public class Screening implements Cloneable {
     @Id
     @Column(name = "SCREENING_ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,6 +23,10 @@ public class Screening {
     private java.sql.Time screeningTime;
     @Column(name = "BOOKED_TICKETS")
     private int bookedTickets;
+
+    public Object clone() throws CloneNotSupportedException{
+        return super.clone();
+    }
 
     public int getBookedTickets() {
         return bookedTickets;

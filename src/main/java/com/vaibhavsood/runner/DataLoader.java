@@ -93,7 +93,7 @@ public class DataLoader implements ApplicationRunner {
         }
     }
 
-    private void populateScreeningsTable() {
+    private void populateScreeningsTable() throws CloneNotSupportedException {
         /* schema.sql lists 5 theaters, generate 2 screenings randomly for
          * each screen in each theater
          */
@@ -134,14 +134,18 @@ public class DataLoader implements ApplicationRunner {
                 // 2 screenings per screen
                 screening1.setScreeningTime(Time.valueOf("10:00:00"));
                 screeningRepository.save(screening1);
+
+                Screening screening1Clone = (Screening)screening1.clone();
                 screening1.setScreeningTime(Time.valueOf("18:00:00"));
-                screeningRepository.save(screening1);
+                screeningRepository.save(screening1Clone);
 
                 if (randomDate1.getDate() != randomDate2.getDate()) {
                     screening2.setScreeningTime(Time.valueOf("10:00:00"));
                     screeningRepository.save(screening2);
+
+                    Screening screening2Clone = (Screening)screening2.clone();
                     screening2.setScreeningTime(Time.valueOf("18:00:00"));
-                    screeningRepository.save(screening2);
+                    screeningRepository.save(screening2Clone);
                 }
             }
         }
