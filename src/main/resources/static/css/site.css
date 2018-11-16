@@ -7,15 +7,23 @@ footer{
     height: 50px;
 }
 
-.movie-cards {
-  padding: 100px 0;
+.movie-card {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  align-items: stretch;
+
+  .card {
+    flex: 0 1 auto;
+  }
+}
+
+.movie-cards {
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-around;
   align-items: stretch;
   flex-wrap: nowrap;
   overflow-x: auto;
-
-  .card {
-    flex: 0 0 auto;
-  }
 }

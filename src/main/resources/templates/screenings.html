@@ -25,8 +25,14 @@
         </div>
     </nav>
     <div class="container">
+        <h3>Movies</h3>
         <div class="movie-cards">
-            <img class="card" th:each="movie: ${movies}" th:src="${movie.moviePosterUrl}"/>
+            <div class="movie-card" th:each="movie:${movies}">
+                <a th:href="@{https://movielens.org/movies/{movieId}(movieId=${movie.movieId})}">
+                    <img class="card" th:src="${movie.moviePosterUrl}"/>
+                </a>
+                <p th:text="${movie.movieName}"/>
+            </div>
         </div>
         <div class="input-group">
             <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
