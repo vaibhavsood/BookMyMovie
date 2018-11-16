@@ -12,6 +12,16 @@ public class Movie {
     private long movieId;
     @Column(name = "MOVIE_POSTER_URL")
     private String moviePosterUrl;
+    @Column(name = "MOVIE_TAGS")
+    private String movieTags;
+
+    public String getMovieTags() {
+        return movieTags;
+    }
+
+    public void setMovieTags(String movieTags) {
+        this.movieTags = movieTags;
+    }
 
     public String getMovieName() {
         return movieName;

@@ -72,6 +72,7 @@ public class DataLoader implements ApplicationRunner {
                 Movie movie = new Movie();
                 movie.setMovieId(Long.parseLong(movieLine[0]));
                 movie.setMovieName(movieName.substring(0, movieName.indexOf('(')).trim());
+                movie.setMovieTags(movieLine[2]);
 
                 String line1 = brLinks.readLine();
                 String[] linkLine = line1.split(",");

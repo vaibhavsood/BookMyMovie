@@ -10,12 +10,12 @@ footer{
 .movie-card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 10px;
   align-items: stretch;
 
   .card {
-    flex: 0 1 auto;
+    flex: 1 1 auto;
   }
 }
 
