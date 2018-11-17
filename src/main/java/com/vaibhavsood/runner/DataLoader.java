@@ -13,6 +13,7 @@ import org.jsoup.nodes.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
@@ -52,8 +53,8 @@ public class DataLoader implements ApplicationRunner {
     }
 
     private void populateMovieTable() {
-        try (BufferedReader brMovies = new BufferedReader(new FileReader("C:\\Users\\vaibhav_sood.PERSISTENT\\Downloads\\Ex_Files_Learning_Spring_Boot\\Ex_Files_Learning_Spring_Boot\\Exercise Files\\Chapter 1\\01_03\\01_03_end\\reservations\\src\\main\\resources\\movies.medium.csv"));
-             BufferedReader brLinks = new BufferedReader(new FileReader("C:\\Users\\vaibhav_sood.PERSISTENT\\Downloads\\Ex_Files_Learning_Spring_Boot\\Ex_Files_Learning_Spring_Boot\\Exercise Files\\Chapter 1\\01_03\\01_03_end\\reservations\\src\\main\\resources\\links.csv"))) {
+        try (BufferedReader brMovies = new BufferedReader(new FileReader(new ClassPathResource("movies.medium.csv").getFile()));
+             BufferedReader brLinks = new BufferedReader(new FileReader(new ClassPathResource("links.csv").getFile()))) {
             String line;
             brMovies.readLine();    // Skip header line
             brLinks.readLine();     // Skip header line
