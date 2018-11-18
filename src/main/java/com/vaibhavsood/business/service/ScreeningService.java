@@ -69,6 +69,10 @@ public class ScreeningService {
         return movies;
     }
 
+    public List<Screening> getMovieScreeningsByMovie(String movieName) {
+        return this.screeningRepository.findByMovieName(movieName);
+    }
+
     public List<MovieScreening> getMovieScreeningsByDate(Date date) {
         Iterable<Screening> screenings = this.screeningRepository.findByScreeningDate(new java.sql.Date(date.getTime()));
         List<MovieScreening> movieScreenings = new ArrayList<>();

@@ -25,31 +25,17 @@ import java.util.List;
 import java.util.Set;
 
 @Controller
-@RequestMapping(value="/screenings")
+@RequestMapping("/screenings")
 public class ScreeningController {
-    private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private ScreeningService screeningService;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String getScreenings(@RequestParam(value = "date", required = false)String dateString, Model model) {
-        Date date = null;
-        if (dateString != null) {
-            try {
-                date = DATE_FORMAT.parse(dateString);
-
-            } catch (ParseException pe) {
-                date = new Date();
-            }
-        } else {
-            date = new Date();
-        }
-
-        Set<Movie> result = this.screeningService.getMoviesByDate(date);
-        model.addAttribute("movies", result);
-        model.addAttribute("movieBooking", new MovieScreening());
+    @RequestMapping(value="/screenings", method = RequestMethod.GET)
+    public String getScreenings(@RequestParam(value = "movie", required = true)String movieString, Model model) {
+        List<Screening> result = this.screeningService.getMovieScreeningsByMovie(movieString);
+        model.addAttribute("screenings", result);
         return "screenings";
     }
 

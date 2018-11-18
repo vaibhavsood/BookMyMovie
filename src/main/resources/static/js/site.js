@@ -40,6 +40,12 @@ function formatDate(input) {
     return new Date(parts[fmt['yyyy']], parts[fmt['mm']]-1, parts[fmt['dd']]);
 };
 
+function bookTickets() {
+    var selectedMovie = document.getElementById('selected-movie').text;
+    var redirectLink = window.location.protocol + "//" + window.location.host + "screenings" + "?movie=" + selectedMovie;
+    window.location.href = redirectLink;
+}
+
 $(document).ready(function(){
     setPicker();
     setInitialDate();
