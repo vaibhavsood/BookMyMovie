@@ -41,8 +41,8 @@ function formatDate(input) {
 };
 
 function bookTickets() {
-    var selectedMovie = document.getElementById('selected-movie').text;
-    var redirectLink = window.location.protocol + "//" + window.location.host + "screenings" + "?movie=" + selectedMovie;
+    var selectedMovie = document.getElementById('selected-movie').innerHTML;
+    var redirectLink = window.location.protocol + "//" + window.location.host + "/"+ "screenings" + "?movie=" + selectedMovie;
     window.location.href = redirectLink;
 }
 

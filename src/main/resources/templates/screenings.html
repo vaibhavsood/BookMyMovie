@@ -24,6 +24,9 @@
             </ul>
         </div>
     </nav>
+    <div class="movie-details" th:style="background-image:url(${movie.moviePosterUrl});background-position:center center;">
+        <h2 th:text="${movie.movieName}"></h2>
+    </div>
     <div class="container">
         <h3>Movies</h3>
         <div class="movie-cards">
