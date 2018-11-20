@@ -24,27 +24,25 @@
             </ul>
         </div>
     </nav>
-    <div class="movie-details" th:style="background-image:url(${movie.moviePosterUrl});background-position:center center;">
-        <h2 th:text="${movie.movieName}"></h2>
+    <div class="container movie-details">
+        <img th:src="${movie.moviePosterUrl}"/>
+        <h4 th:text="${movie.movieName}"></h4>
     </div>
     <div class="container">
-        <h3>Movies</h3>
-        <div class="movie-cards">
-            <div class="movie-card" th:each="movie:${movies}">
-                <a th:href="@{https://movielens.org/movies/{movieId}(movieId=${movie.movieId})}">
-                    <img class="card" th:src="${movie.moviePosterUrl}"/>
-                </a>
-                <h5 style="font-weight:600" class="card" id="selected-movie" th:text="${movie.movieName}"></h5>
-                <h6 style="font-weight:300" class="card" th:text="${movie.movieTags}"></h6>
-                <div class="col-sm-12">
-                    <button class="btn btn-primary btn-sm btn-block" onclick="bookTickets">Book</button>
-                </div>
-            </div>
-        </div>
-        <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
-            <input type="text" class="form-control" id="datepicker" aria-describedby="basic-addon1"/>
-        </div>
+        <ul class="movie-dates">
+            <li></li>
+        </ul>
+    </div>
+    <div class="container" th:each="screening:${screenings}">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td th:text="${screening.theatreName} + ',' + ${screening.theatreCity}"></td>
+                    <td th:text="${screening.screeningDate}"></td>
+                    <td th:text="${screening.screeningTime}"></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <footer class="footer navbar-inverse navbar-fixed-bottom">
         <div class="container">

@@ -38,7 +38,7 @@ public class ScreeningController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String getScreenings(@RequestParam(value = "movie", required = true)String movieString, Model model) {
-        List<Screening> result = this.screeningService.getMovieScreeningsByMovie(movieString);
+        List<MovieScreening> result = this.screeningService.getMovieScreeningsByMovie(movieString);
         model.addAttribute("screenings", result);
         model.addAttribute("movie", movieRepository.findByMovieName(movieString));
         return "screenings";
