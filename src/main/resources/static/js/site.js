@@ -46,10 +46,23 @@ function bookTickets() {
     window.location.href = redirectLink;
 }
 
+var popoverContent = `<form action="/seats" method="get">
+                            <button class="btn btn-primary btn-sm" type="submit" name="count" value="1">1</button>
+                            <button class="btn btn-primary btn-sm" type="submit" name="count" value="2">2</button>
+                            <button class="btn btn-primary btn-sm" type="submit" name="count" value="3">3</button>
+                            <button class="btn btn-primary btn-sm" type="submit" name="count" value="4">4</button>
+                            <button class="btn btn-primary btn-sm" type="submit" name="count" value="5">5</button>
+                      </form>`;
+
 $(document).ready(function(){
     setPicker();
     setInitialDate();
-
+    $('[data-toggle="popover"]').popover({
+                                             container: 'body',
+                                             html:true,
+                                             animation: true,
+                                             content: popoverContent
+                                           });
     //$(".bookButton").click(function() {
 
     //}
