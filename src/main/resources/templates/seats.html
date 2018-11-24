@@ -24,31 +24,15 @@
             </ul>
         </div>
     </nav>
-    <div class="container movie-details">
-        <img th:src="${movie.moviePosterUrl}"/>
-        <h4 th:text="${movie.movieName}"></h4>
+    <div class="booking-seats">
+        <h2 style="text-align:center;">Booking seats...</h2>
+        <div class="loader">
+        </div>
     </div>
-    <div class="container">
-        <ul class="movie-dates">
-            <li></li>
-        </ul>
-    </div>
-    <div class="container" th:each="screening:${screenings}">
-        <table class="table">
-            <tbody>
-                <tr>
-                    <td th:text="${screening.theatreName} + ',' + ${screening.theatreCity}"></td>
-                    <td th:text="${screening.screeningDate}"></td>
-                    <td th:text="${screening.screeningTime}"></td>
-                    <td><a class="btn btn-primary btn-sm" role="button" tabindex="0" data-toggle="popover" title="Number of Seats"
-                           data-trigger="focus"
-                           >
-                        Book Tickets!
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="booking-success">
+        <p>
+            <strong>Success!</strong> Enjoy the show!
+        </p>
     </div>
     <footer class="footer navbar-inverse navbar-fixed-bottom">
         <div class="container">

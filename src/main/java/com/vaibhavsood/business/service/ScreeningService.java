@@ -69,12 +69,12 @@ public class ScreeningService {
         return movies;
     }
 
-    public List<Screening> getMovieScreeningsByMovie(String movieName) {
+    public List<Screening> getScreeningsByMovie(String movieName) {
         return this.screeningRepository.findByMovieName(movieName);
     }
 
-    public List<MovieScreening> getMovieScreeningsByDate(Date date) {
-        Iterable<Screening> screenings = this.screeningRepository.findByScreeningDate(new java.sql.Date(date.getTime()));
+    public List<MovieScreening> getMovieScreeningsByMovie(String movieName) {
+        Iterable<Screening> screenings = this.screeningRepository.findByMovieName(movieName);
         List<MovieScreening> movieScreenings = new ArrayList<>();
 
         if (screenings != null) {
@@ -93,7 +93,7 @@ public class ScreeningService {
                 }
 
 
-                movieScreening.setScreeningDate(DATE_FORMAT.format(date));
+                movieScreening.setScreeningDate(screening.getScreeningDate().toString());
                 movieScreening.setScreeningTime(screening.getScreeningTime().toString());
 
                 movieScreenings.add(movieScreening);

@@ -5,6 +5,7 @@ import com.vaibhavsood.business.service.ScreeningService;
 import com.vaibhavsood.data.entity.Movie;
 import com.vaibhavsood.data.entity.Screening;
 import com.vaibhavsood.data.entity.Ticket;
+import com.vaibhavsood.data.repository.MovieRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +31,16 @@ public class ScreeningController {
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
+    private MovieRepository movieRepository;
+
+    @Autowired
     private ScreeningService screeningService;
 
-    @RequestMapping(value="/screenings", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public String getScreenings(@RequestParam(value = "movie", required = true)String movieString, Model model) {
-        List<Screening> result = this.screeningService.getMovieScreeningsByMovie(movieString);
+        List<MovieScreening> result = this.screeningService.getMovieScreeningsByMovie(movieString);
         model.addAttribute("screenings", result);
+        model.addAttribute("movie", movieRepository.findByMovieName(movieString));
         return "screenings";
     }
 
