@@ -19,32 +19,22 @@
                 </a>
             </div>
             <ul class="nav navbar-nav">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Movies</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="/movies">Home</a></li>
+                <li><a href="/movies">Movies</a></li>
             </ul>
         </div>
     </nav>
     <div class="container">
-        <h3>Movies</h3>
-        <div class="movie-cards">
-            <div class="movie-card" th:each="movie:${movies}">
-                <a th:href="@{https://movielens.org/movies/{movieId}(movieId=${movie.movieId})}">
-                    <img class="card" th:src="${movie.moviePosterUrl}"/>
-                </a>
-                <h5 style="font-weight:600" class="card" id="selected-movie" th:text="${movie.movieName}"></h5>
-                <h6 style="font-weight:300" class="card" th:text="${movie.movieTags}"></h6>
-                <div class="col-sm-12">
-                    <button class="btn btn-primary btn-sm btn-block" onclick="bookTickets()">Book</button>
-                </div>
+        <h2>Register</h2>
+        <form method="post" action="/registration" th:object="${userForm}" class="form-signin">
+            <div class="form-group">
+                <input name="username" type="text" th:field="*{username}" class="form-control" placeholder="Username"
+                       autofocus="true"/>
+                <input name="password" type="password" th:field="*{password}" class="form-control" placeholder="Password"/>
+                <input name="passwordConfirm" type="password" th:field="*{passwordConfirm}" class="form-control" placeholder="Confirm your password"/>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
             </div>
-        </div>
-        <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
-            <input type="text" class="form-control" id="datepicker" aria-describedby="basic-addon1"/>
-        </div>
+        </form>
     </div>
     <footer class="footer navbar-inverse navbar-fixed-bottom">
         <div class="container">
@@ -59,6 +49,5 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/site.js"></script>
-
 </body>
 </html>
