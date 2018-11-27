@@ -27,4 +27,4 @@ hs_err_pid*
 .idea/workspace.xml
 src/main/java/com/vaibhavsood/config/
 target/
-.idea/libraries/*
+.idea/libraries/

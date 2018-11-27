@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Movie Reservations</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/movie-projector-icon.png" />
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../static/css/site.css"/>
@@ -39,10 +40,10 @@
                 <a th:href="@{https://movielens.org/movies/{movieId}(movieId=${movie.movieId})}">
                     <img class="card" th:src="${movie.moviePosterUrl}"/>
                 </a>
-                <h5 style="font-weight:600" class="card" id="selected-movie" th:text="${movie.movieName}"></h5>
+                <h5 style="font-weight:600" class="card" th:text="${movie.movieName}"></h5>
                 <h6 style="font-weight:300" class="card" th:text="${movie.movieTags}"></h6>
                 <div class="col-sm-12">
-                    <button class="btn btn-primary btn-sm btn-block" onclick="bookTickets()">Book</button>
+                    <button class="btn btn-primary btn-sm btn-block" th:onclick="|bookTickets('${movie.movieName}')|">Book</button>
                 </div>
             </div>
         </div>
