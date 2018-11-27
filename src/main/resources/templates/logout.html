@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Movie Reservations</title>
+    <title>Logout</title>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../static/css/site.css"/>
@@ -24,17 +24,13 @@
             </ul>
         </div>
     </nav>
-    <div class="container">
-        <h2>Register</h2>
-        <form method="post" action="/registration" th:object="${userForm}" class="form-signin">
-            <div class="form-group">
-                <input name="username" type="text" th:field="*{username}" class="form-control" placeholder="Username"
-                       autofocus="true"/>
-                <input name="password" type="password" th:field="*{password}" class="form-control" placeholder="Password"/>
-                <input name="passwordConfirm" type="password" class="form-control" placeholder="Confirm your password"/>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-            </div>
-        </form>
+    <div layout:fragment="content">
+        <div class="container main-content">
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-info"><h3>You have been successfully logged out.</h3></li>
+            </ul>
+            <a th:href="@{/movies}">Return home</a>
+        </div>
     </div>
     <footer class="footer navbar-inverse navbar-fixed-bottom">
         <div class="container">

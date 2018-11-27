@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Movie Reservations</title>
+    <title>Login</title>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../static/css/site.css"/>
@@ -24,17 +24,24 @@
             </ul>
         </div>
     </nav>
-    <div class="container">
-        <h2>Log in</h2>
-        <form action="/login" method="post" class="form-signin">
-            <div class="form-group">
-                <input name="username" type="text" class="form-control" placeholder="Username"
-                       autofocus="true"/>
-                <input name="password" type="password" class="form-control" placeholder="Password"/>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
-                <h4 class="text-center"><a href="/registration">Create an account</a></h4>
-            </div>
-        </form>
+    <div layout:fragment="content">
+        <div class="container">
+            <h2>Log in</h2>
+            <form action="/login" method="post" class="form-signin">
+                <div th:if="${param.error}">
+                    <div class="alert alert-danger">
+                        Invalid username or password, please try again
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input name="username" type="text" class="form-control" placeholder="Username"
+                           autofocus="true"/>
+                    <input name="password" type="password" class="form-control" placeholder="Password"/>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
+                    <h4 class="text-center"><a href="/registration">Create an account</a></h4>
+                </div>
+            </form>
+        </div>
     </div>
     <footer class="footer navbar-inverse navbar-fixed-bottom">
         <div class="container">
