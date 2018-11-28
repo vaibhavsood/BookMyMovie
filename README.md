@@ -3,3 +3,4 @@ This is a proof of concept movie ticket booking application using Spring Boot, S
 
 It uses the [MovieLens small dataset](http://files.grouplens.org/datasets/movielens/) to populate movie info  
 
+![Movies](https://drive.google.com/file/d/1JsM4-SaQbwKB0_NK1sGvhUIGkPJTfIF9/view?usp=sharing)
