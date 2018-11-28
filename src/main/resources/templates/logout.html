@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -21,6 +21,11 @@
             <ul class="nav navbar-nav">
                 <li><a href="/movies">Home</a></li>
                 <li><a href="/movies">Movies</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item" sec:authorize="isAnonymous()">
+                    <a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                </li>
             </ul>
         </div>
     </nav>
