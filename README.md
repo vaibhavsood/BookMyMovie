@@ -1,7 +1,7 @@
 # BookMyMovie
-This is a proof of concept movie ticket booking application using Spring Boot, Spring Security and a simple but neat HTML/CSS/Bootstrap frontend.
+This is a simple movie ticket booking application using Spring Boot, Spring Security and HTML/CSS/Bootstrap for the frontend. 
 
-It uses the [MovieLens small dataset](http://files.grouplens.org/datasets/movielens/) to populate movie info  
+It uses the [MovieLens dataset (small)](http://files.grouplens.org/datasets/movielens/) to populate movie info  
 
 
 ![Movies](movies-home-page.png)
@@ -39,3 +39,7 @@ From the main menu, choose ```File->Open``` and navigate to the BookMyMovie fold
 Right click ```ReservationsApplication``` class file and choose Run
 
 The application can then be accessed by pointing your browser to http://localhost:8080/movies
+
+## Contributing
+
+This is intended to be a learning project so please feel free to fork this repo or suggest improvements!
