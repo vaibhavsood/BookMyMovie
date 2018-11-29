@@ -23,9 +23,19 @@ BookMyMovie is a [Spring Boot](https://spring.io/guides/gs/spring-boot) applicat
 ```
 git clone https://github.com/vaibhavsood/BookMyMovie.git
 ```
-2) To run from the command line:
+2a) To run from the command line:
 ```
 cd BookMyMovie
 ./mvnw package
 java -jar target/*.jar
 ```
+or run it directly from Maven using the Spring Boot Maven plugin
+```
+cd BookMyMovie
+./mvnw spring-boot:run
+```
+2b) To run using an IDE (Intellij):
+From the main menu, choose ```File->Open``` and navigate to the BookMyMovie folder cloned from step 1
+Right click ```ReservationsApplication``` class file and choose Run
+
+The application can then be accessed by pointing your browser to http://localhost:8080/movies
