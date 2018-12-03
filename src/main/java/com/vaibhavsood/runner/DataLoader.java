@@ -15,11 +15,9 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ResourceUtils;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
@@ -53,8 +51,8 @@ public class DataLoader implements ApplicationRunner {
     }
 
     private void populateMovieTable() {
-        try (BufferedReader brMovies = new BufferedReader(new FileReader(new ClassPathResource("movies.medium.csv").getFile()));
-             BufferedReader brLinks = new BufferedReader(new FileReader(new ClassPathResource("links.csv").getFile()))) {
+        try (BufferedReader brMovies = new BufferedReader(new InputStreamReader(new ClassPathResource("movies.medium.csv").getInputStream()));
+               BufferedReader brLinks = new BufferedReader(new InputStreamReader(new ClassPathResource("links.csv").getInputStream()))) {
             String line;
             brMovies.readLine();    // Skip header line
             brLinks.readLine();     // Skip header line
