@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -24,24 +24,22 @@
             </ul>
         </div>
     </nav>
-    <div layout:fragment="content">
-        <div class="container">
-            <h2>Log in</h2>
-            <form action="/login" method="post" class="form-signin">
-                <div th:if="${param.error}">
-                    <div class="alert alert-danger">
-                        Invalid username or password, please try again
-                    </div>
+    <div class="container">
+        <h2>Log in</h2>
+        <form action="/login" method="post" class="form-signin">
+            <div th:if="${param.error}">
+                <div class="alert alert-danger">
+                    Invalid username or password, please try again
                 </div>
-                <div class="form-group">
-                    <input name="username" type="text" class="form-control" placeholder="Username"
-                           autofocus="true"/>
-                    <input name="password" type="password" class="form-control" placeholder="Password"/>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
-                    <h4 class="text-center"><a href="/registration">Create an account</a></h4>
-                </div>
-            </form>
-        </div>
+            </div>
+            <div class="form-group">
+                <input name="username" type="text" class="form-control" placeholder="Username"
+                       autofocus="true"/>
+                <input name="password" type="password" class="form-control" placeholder="Password"/>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
+                <h4 class="text-center"><a href="/registration">Create an account</a></h4>
+            </div>
+        </form>
     </div>
     <footer class="footer navbar-inverse navbar-fixed-bottom">
         <div class="container">

@@ -46,9 +46,9 @@
         <table class="table">
             <tbody>
                 <tr>
-                    <td th:text="${screening.theatreName} + ',' + ${screening.theatreCity}"></td>
-                    <td th:text="${screening.screeningDate}"></td>
-                    <td th:text="${screening.screeningTime}"></td>
+                    <td class="col-md-4" th:text="${screening.theatreName} + ',' + ${screening.theatreCity}"></td>
+                    <td class="col-md-4" th:text="${screening.screeningDate}"></td>
+                    <td class="col-md-4" th:text="${screening.screeningTime}"></td>
                     <td><a class="btn btn-primary btn-sm" role="button" tabindex="0" data-toggle="popover" title="Number of Seats"
                            data-trigger="focus"
                            >

@@ -37,12 +37,12 @@
         <h3>Movies</h3>
         <div class="movie-cards">
             <div class="movie-card" th:each="movie:${movies}">
-                <a th:href="@{https://movielens.org/movies/{movieId}(movieId=${movie.movieId})}">
-                    <img class="card" th:src="${movie.moviePosterUrl}"/>
-                </a>
-                <h5 style="font-weight:600" class="card" th:text="${movie.movieName}"></h5>
-                <h6 style="font-weight:300" class="card" th:text="${movie.movieTags}"></h6>
                 <div class="col-sm-12">
+                    <a th:href="@{https://movielens.org/movies/{movieId}(movieId=${movie.movieId})}">
+                        <img class="card" th:src="${movie.moviePosterUrl}"/>
+                    </a>
+                    <h5 style="font-weight:600" class="card" th:text="${movie.movieName}"></h5>
+                    <h6 style="font-weight:300" class="card" th:text="${movie.movieTags}"></h6>
                     <button class="btn btn-primary btn-sm btn-block" th:onclick="|bookTickets('${movie.movieName}')|">Book</button>
                 </div>
             </div>
