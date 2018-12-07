@@ -44,7 +44,7 @@ The application can then be accessed by pointing your browser to http://localhos
 ```
 cd BookMyMovie
 docker build -t bookmymovie
-docker run -d bookmymovie
+docker run -p 8080:8080 -d bookmymovie
 ```
 Note: A prebuilt docker image is available at https://hub.docker.com/r/vaibhavsood/bookmymovie/
 
