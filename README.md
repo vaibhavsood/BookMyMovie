@@ -8,7 +8,7 @@ It uses the [MovieLens dataset (small)](http://files.grouplens.org/datasets/movi
 
 ## Running BookMyMovie locally
 
-BookMyMovie is a [Spring Boot](https://spring.io/guides/gs/spring-boot) application built using [Maven](https://spring.io/guides/gs/maven/). It can be run either from the command line or through an IDE
+BookMyMovie is a [Spring Boot](https://spring.io/guides/gs/spring-boot) application built using [Maven](https://spring.io/guides/gs/maven/). It can be run either from the command line or through an IDE or as a docker image
 
 ### Prerequisites
 
@@ -39,6 +39,14 @@ From the main menu, choose ```File->Open``` and navigate to the BookMyMovie fold
 Right click ```ReservationsApplication``` class file and choose Run
 
 The application can then be accessed by pointing your browser to http://localhost:8080/movies
+
+2c) The application can also be run as a docker image. To run as a docker image (docker needs to be preinstalled):
+```
+cd BookMyMovie
+docker build -t bookmymovie
+docker run -p 8080:8080 -d bookmymovie
+```
+Note: A prebuilt docker image is available at https://hub.docker.com/r/vaibhavsood/bookmymovie/
 
 ## Contributing
 
