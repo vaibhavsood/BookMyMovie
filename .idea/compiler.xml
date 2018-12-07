@@ -6,10 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="MovieBookingSystem" />
         <module name="reservations" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="MovieBookingSystem" target="1.8" />
       <module name="reservations" target="1.8" />
     </bytecodeTargetLevel>
   </component>
