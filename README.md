@@ -1,3 +1,4 @@
+[![Build Status](https://api.travis-ci.org/vaibhavsood/BookMyMovie.svg?branch=master)](https://travis-ci.org/vaibhavsood/BookMyMovie)
 # BookMyMovie
 This is a simple movie ticket booking application using Spring Boot, Spring Security and HTML/CSS/Bootstrap for the frontend. 
 
